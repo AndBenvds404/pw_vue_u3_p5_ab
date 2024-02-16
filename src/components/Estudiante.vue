@@ -22,7 +22,7 @@
                 <p type="Sangre:">  <input v-model="sangre" type="text"> </p>
                 <p type="Matricula:" >  <input v-model="matricula" type="text"> </p>
                 <p type="Semestre" >  <input v-model="semestre" type="text"> </p>
-                <p type="Gratuidad:" >  <input v-model="gratiudad" type="boolean"> </p>
+                <p type="Gratuidad:" >  <input v-model="gratiudad" type="text"> </p>
 
                 
             </div>
@@ -43,13 +43,54 @@
                 <p type="Matricula:" >  <input v-model="matricula" type="text"> </p>
                 <p type="Semestre" >  <input v-model="semestre" type="text"> </p>
                 <p type="Gratuidad:" >  <input v-model="gratiudad" type="text"> </p>
+                
                 <div class="btn-guardar">
                     <button @click="insertar()">Guardar</button>
                     
                 </div>
                 
-            </div>
+        </div>
+
     </div>
+
+    <div class="container-formulario">
+       <div class="formulario" > 
+               <h2>Actualizar Estudiante</h2>
+               <p type="Ingrese el Id del Estudiante a actualizar"><input class="input-id" v-model="id" type="text"> </p>
+                
+               <p type="Nombre:" >  <input v-model="body.nombre" type="text"> </p>
+               <p type="Apellido:" >  <input  v-model="body.apellido" type="text"> </p>
+               <p type="Cedula:" >  <input v-model="body.cedula" type="text"> </p>
+               <p type="G&#233;nero:" >  <input v-model="body.genero" type="text"> </p>
+               <p type="Fecha de nacimiento:" >  <input v-model="body.fechaNacimiento" type="text"> </p>
+               <p type="Sangre:">  <input v-model="body.sangre" type="text"> </p>
+               <p type="Matricula:" >  <input v-model="body.matricula" type="text"> </p>
+               <p type="Semestre" >  <input v-model="body.semestre" type="text"> </p>
+               <p type="Gratuidad:" >  <input v-model="body.gratiudad" type="checkbox"> </p>
+               
+               <div class="btn-guardar">
+                   <button @click="actualizar()">Actualizar</button>
+                   
+               </div>
+               
+       </div>
+
+   </div>
+
+
+    <div class="container-formulario">
+            
+            <div class="formulario" > 
+                <h2>Eliminar Estudiante</h2>
+                <p type="Ingrese el Id del Estudiante"><input class="input-id" v-model="id" type="text"> </p>
+                
+                <div class="btn-guardar">
+                    <button @click="eliminar">Consultar</button>
+                    
+                </div>
+        </div>
+    </div>
+   
     
 
   
@@ -63,8 +104,8 @@
 <script>
 import { consultarEstudianteFachada } from '@/helpers/clienteEstudiante'
 import {insertarFachada} from '@/helpers/clienteEstudiante'
-
-//import {consultarEstudiante} from '../helpers/clienteEstudiante'
+import {actualizarFachada} from '@/helpers/clienteEstudiante'
+import {eliminarFachada} from '@/helpers/clienteEstudiante'
 
 export default {
 
@@ -80,7 +121,7 @@ export default {
             matricula:null,
             semestre:null,
             gratiudad:null,
-            obj:{
+            body:{
                 nombre:null,
                 apellido:null,
                 cedula:null,
@@ -98,15 +139,15 @@ export default {
         async consultarPorId(){
             const data = await consultarEstudianteFachada(this.id);
             console.log(data);
-            this.nombre=data.nombre
-            this.apellido=data.apellido
-            this.cedula=data.cedula
-            this.genero=data.genero
-            this.fechaNacimiento=data.fechaNacimiento
-            this.sangre=data.sangre
-            this.matricula=data.matricula
-            this.semestre=data.semestre
-            this.gratiudad=data.gratiudad
+            this.body.nombre=data.nombre
+            this.body.apellido=data.apellido
+            this.body.cedula=data.cedula
+            this.body.genero=data.genero
+            this.body.fechaNacimiento=data.fechaNacimiento
+            this.body.sangre=data.sangre
+            this.body.matricula=data.matricula
+            this.body.semestre=data.semestre
+            this.body.gratiudad=data.gratiudad
             
 
 
@@ -123,6 +164,17 @@ export default {
             console.log('Se inserto'+estuBody);
             await insertarFachada(estuBody);
         },
+
+
+        async actualizar(){
+            
+            await actualizarFachada(this.id, this.body )
+        },
+
+        async eliminar (){
+
+            await eliminarFachada(this.id);
+        }
 
         
 

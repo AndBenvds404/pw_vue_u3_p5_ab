@@ -10,6 +10,8 @@ export const consultarEstudianteFachada=  async (id)=>{
 }
 
 
+
+
 const insertar= async (body)=>{
     const data = axios.post(`http://localhost:8080/API/v1.0/Matricula/estudiantes10`,body).then(r=>r.data);
     return data;
@@ -18,3 +20,28 @@ const insertar= async (body)=>{
 export const insertarFachada=  async (body)=>{
     return await insertar(body)
 }
+
+
+
+
+const actualizar= async (id, body)=>{
+    const data = axios.put(`http://localhost:8080/API/v1.0/Matricula/estudiantes10/${id}`,body).then(r=>r.data);
+    console.log(data);
+}
+
+export const actualizarFachada =  async (id, body)=>{
+    await actualizar(id, body)
+}
+
+
+
+
+const eliminar= async (id)=>{
+    const data = axios.delete(`http://localhost:8080/API/v1.0/Matricula/estudiantes10/${id}`).then(r=>r.data);
+    console.log(data);
+}
+
+export const eliminarFachada =  async (id)=>{
+    await eliminar(id)
+}
+
