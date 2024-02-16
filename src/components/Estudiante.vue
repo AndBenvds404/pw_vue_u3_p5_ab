@@ -7,7 +7,7 @@
         <div class="container-formulario">
             
             <div class="formulario" > 
-                <h2>Guardar Estudiante</h2>
+                <h2>Consultar Estudiante</h2>
                 <p type="Ingrese el Id del Estudiante"><input class="input-id" v-model="id" type="text"> </p>
                 
                 <div class="btn-guardar">
@@ -82,10 +82,10 @@
             
             <div class="formulario" > 
                 <h2>Eliminar Estudiante</h2>
-                <p type="Ingrese el Id del Estudiante"><input class="input-id" v-model="id" type="text"> </p>
+                <p type="Ingrese el Id del Estudiante a Eliminar"><input class="input-id" v-model="id" type="text"> </p>
                 
                 <div class="btn-guardar">
-                    <button @click="eliminar">Consultar</button>
+                    <button @click="eliminar">Borrar</button>
                     
                 </div>
         </div>
@@ -101,7 +101,7 @@
 
 </template>
 
-<script>
+<script scoped>
 import { consultarEstudianteFachada } from '@/helpers/clienteEstudiante'
 import {insertarFachada} from '@/helpers/clienteEstudiante'
 import {actualizarFachada} from '@/helpers/clienteEstudiante'
@@ -183,7 +183,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .container-formulario{
     display: flex;
     justify-content: center;
