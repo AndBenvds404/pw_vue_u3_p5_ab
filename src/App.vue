@@ -1,17 +1,22 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+
+  <NavBar/>
   <RouterView/>
   
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import NavBar from './components/NavBar.vue'
 import EstudiantePagina from './pages/EstudiantePagina.vue'
+
 
 export default {
   name: 'App',
   components: {
-    EstudiantePagina
+    EstudiantePagina,
+    NavBar
   }
 }
 </script>

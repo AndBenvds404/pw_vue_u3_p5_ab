@@ -1,5 +1,4 @@
 <template>
-    <h1>Pagina Eliminar</h1>
   
     <div class="container-formulario">
               

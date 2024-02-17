@@ -52,8 +52,8 @@ export default {
 
         async insertar(){
   
-            
-            await insertarFachada(body);
+            console.log(this.body);
+            await insertarFachada(this.body);
         }
         
 

@@ -1,5 +1,5 @@
 <template>
-    <h1>Pagina Actualizar</h1>
+    
     <div class="container-formulario">
          <div class="formulario" > 
                  <h2>Actualizar Estudiante</h2>
